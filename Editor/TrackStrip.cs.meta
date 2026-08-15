@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 7d2399a70d8889c4aa3a2250fe43b96d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - trackStripAsset: {fileID: 9197481963319205126, guid: d1d7e0d309b9c7f4097872c2c0fafd82, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

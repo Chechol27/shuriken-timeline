@@ -1,0 +1,34 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Packages/com.xexolio.shuriken-timeline/Editor/UXML/USS_ShurikenTimeline.uss?fileID=7433441132597879392&amp;guid=5b5645d9d92337f4ebe729ba17eb0d18&amp;type=3#USS_ShurikenTimeline"/>
+    <ui:VisualElement name="pnl_parent" style="flex-grow: 1; min-width: 100%; min-height: 100%; flex-shrink: 1; flex-basis: 100%;">
+        <ui:VisualElement name="pnl_top_bar" style="flex-grow: 1; flex-direction: row; height: 30px; min-height: 26px; max-height: 26px; background-color: rgb(37, 37, 37); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px;">
+            <uie:ObjectField label="Target" name="object_target" type="UnityEngine.ParticleSystem, UnityEngine.ParticleSystemModule" style="font-size: 10px; margin-left: 4px; margin-right: 1px; -unity-text-auto-size: none; background-size: 100% 100%; -unity-text-align: middle-left; justify-content: flex-start; align-content: flex-start; min-width: 100px; max-width: none;"/>
+            <ui:VisualElement name="pnl_controls" enabled="true" style="flex-grow: 0; flex-direction: row; opacity: 1; justify-content: flex-start;">
+                <ui:Button text="◀◀" name="btn_jump_start" style="margin-left: 0; margin-right: 0; font-size: 8px;"/>
+                <ui:Button text="|◀" name="btn_previous_frame" style="margin-left: 0; margin-right: 0; font-size: 10px;"/>
+                <ui:Button text="▶" name="btn_play" style="margin-left: 0; margin-right: 0; font-size: 10px;"/>
+                <ui:Button text="▶|" name="btn_next_frame" style="margin-left: 0; margin-right: 0; font-size: 10px;"/>
+                <ui:Button text="▶▶" name="btn_jump_end" style="margin-left: 0; margin-right: 0; font-size: 8px;"/>
+            </ui:VisualElement>
+            <ui:FloatField label="" value="0" name="float_time_selection" style="min-width: 70px; font-size: 10px;"/>
+        </ui:VisualElement>
+        <ui:ScrollView name="scroll_vireport" style="flex-grow: 0; height: 100%; background-color: rgb(51, 51, 51); min-height: auto;">
+            <ui:VisualElement name="pnl_viewport" style="flex-grow: 1; flex-direction: row; justify-content: flex-start; flex-shrink: 1;">
+                <ui:VisualElement name="pnl_track_headers" style="flex-grow: 1; max-width: 30%; margin-right: 1px;">
+                    <ui:VisualElement name="pnl_track_head_controls" style="flex-grow: 0; min-height: 20px; max-height: 20px; background-color: rgb(43, 43, 43);">
+                        <ui:Button text="&#10;" style="max-width: 25px; flex-direction: row; justify-content: space-between; align-content: center; padding-left: 2px; padding-right: 2px; min-height: 18px; max-height: 18px; margin-top: 0; margin-bottom: 0; border-bottom-width: 0; border-top-width: 0; border-left-width: 0; border-right-width: 0;">
+                            <ui:Label text="+" name="Label" style="margin-left: 2px; margin-right: 0; -unity-font-style: bold; padding-top: 0; padding-bottom: 0; margin-bottom: 0; -unity-text-align: middle-center; translate: 0 -1px; margin-top: 0;"/>
+                            <ui:Label text="▼" style="margin-left: 0; margin-right: 0; font-size: 5px; -unity-text-align: middle-center; -unity-font-style: bold; padding-top: 0; padding-bottom: 0; translate: -3px 0; margin-top: 0; margin-bottom: 0;"/>
+                        </ui:Button>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="bar_Resize" style="flex-grow: 1; min-width: 2px; max-width: 2px; background-color: rgb(173, 173, 173); flex-shrink: 0; flex-basis: 100%; min-height: auto;"/>
+                <ui:VisualElement name="pnl_tracks" style="flex-grow: 1; max-width: none; flex-shrink: 1; margin-left: 1px;">
+                    <ui:VisualElement name="pnl_track_timeline" style="flex-grow: 1; min-height: 20px; max-height: 20px; background-color: rgb(43, 43, 43);">
+                        <ui:IMGUIContainer name="imgui_time_stamps" style="flex-basis: 100%;"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:ScrollView>
+    </ui:VisualElement>
+</ui:UXML>

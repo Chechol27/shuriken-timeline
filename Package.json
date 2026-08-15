@@ -1,0 +1,13 @@
+{
+    "name":"com.xexolio.shuriken-timeline",
+    "version":"1.0.0",
+    "displayName" : "Shuriken Timeline",
+    "description" : "A timeline-like editor for shuriken particle systems",
+    "unity" : "6000.3",
+
+    "author" : {
+        "name" : "Sergio Peñaloza",
+        "email" : "sergio.penaloa@gmail.com",
+        "url" : "https://github.com/Chechol27"
+    }
+}

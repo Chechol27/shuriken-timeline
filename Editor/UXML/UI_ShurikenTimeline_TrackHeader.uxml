@@ -1,0 +1,9 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:VisualElement name="pnl_main" style="flex-grow: 1; flex-direction: row; justify-content: flex-start; -unity-text-align: middle-left; min-height: 40px; max-height: 40px; border-top-left-radius: 4px; border-bottom-left-radius: 4px; background-color: rgb(65, 65, 65); margin-top: 1px; margin-bottom: 1px; margin-left: 15px;">
+        <uie:ObjectField label="" type="UnityEngine.ParticleSystem, UnityEngine.ParticleSystemModule" name="object_particle_system" enabled="false" style="max-width: 200px; min-width: auto; margin-left: 2px; flex-shrink: 1;"/>
+        <ui:VisualElement name="pnl_indicators" style="flex-grow: 1; flex-direction: row-reverse;">
+            <ui:Label text="M" name="label_muted" style="display: flex; -unity-font-style: bold; -unity-text-align: middle-center; margin-bottom: 4px; transform-origin: right; -unity-text-outline-width: 0; -unity-text-auto-size: none; background-color: rgba(47, 47, 47, 0); border-left-width: 0; border-left-color: rgb(0, 0, 0);"/>
+            <ui:Label text="L" name="label_looping" style="display: flex; -unity-font-style: bold; -unity-text-align: middle-center; margin-bottom: 4px; transform-origin: right;"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

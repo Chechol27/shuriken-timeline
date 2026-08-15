@@ -1,0 +1,13 @@
+:root {
+}
+
+.unity-object-field__label {
+    min-width: 10px;
+}
+
+.unity-scroll-view__content-container--vertical {
+    min-height: 100%;
+    opacity: 1;
+    overflow: hidden;
+    background-color: rgb(36, 36, 36);
+}

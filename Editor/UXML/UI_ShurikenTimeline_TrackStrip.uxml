@@ -1,0 +1,5 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:VisualElement name="pnl_track_main" style="flex-grow: 1; min-height: 38px; max-height: 38px; margin-top: 2px; margin-bottom: 2px; color: rgb(65, 65, 65); background-color: rgba(65, 65, 65, 0.525);">
+        <ui:IMGUIContainer name="imgui_strip_container" style="flex-grow: 1;"/>
+    </ui:VisualElement>
+</ui:UXML>
