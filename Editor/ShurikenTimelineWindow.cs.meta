@@ -6,8 +6,8 @@ MonoImporter:
   defaultReferences:
   - m_ViewDataDictionary: {instanceID: 0}
   - windowAsset: {fileID: 9197481963319205126, guid: d09f58386fe6ca0499a5c6b3725f9cbb, type: 3}
-  - barAsset: {instanceID: 0}
-  - trackAsset: {instanceID: 0}
+  - trackHeaderPanelAsset: {fileID: 9197481963319205126, guid: 58e472817171f884db001835cc18fb5e, type: 3}
+  - trackPanelAsset: {fileID: 9197481963319205126, guid: 92936b6e874e9a14681d6a6011d5b1d6, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

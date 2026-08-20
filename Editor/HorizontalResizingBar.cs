@@ -11,19 +11,30 @@ public class HorizontalResizingBar : ScriptableObject
 
     void SetIsDragging(MouseDownEvent evt)
     {
-        if (evt.button == 0) isDragging = true;
+        if (evt.button == 0 && control.worldBound.Contains(control.parent.LocalToWorld(evt.mousePosition)))
+        {
+            isDragging = true;
+        }
     }
 
-    void SetNotDragging(PointerCancelEvent evt)
+    void SetNotDragging(MouseUpEvent evt)
     {
-        isDragging = false;
+        if (evt.button == 0)
+        {
+            isDragging = false;
+        }
     }
 
     void Drag(MouseMoveEvent evt)
     {
+        if (!isDragging) return;
         float xDelta = evt.mouseDelta.x;
-        leftPanel.style.width = new Length(leftPanel.style.width)
-        
+        if (leftPanel.resolvedStyle.width >= leftPanel.resolvedStyle.maxWidth.value) return;
+        //TODO: Resize left panel
+        //Move and resize right panel
+        control.style.translate = new Vector2(control.style.translate.value.x.value + xDelta, 0);
+        leftPanel.style.width = Mathf.Max(0, leftPanel.resolvedStyle.width + xDelta);
+        evt.StopPropagation();
     }
     
     public void Init(VisualElement control, VisualElement leftPanel, VisualElement rightPanel)
@@ -31,8 +42,8 @@ public class HorizontalResizingBar : ScriptableObject
         this.control = control;
         this.leftPanel = leftPanel;
         this.rightPanel = rightPanel;
-        control.RegisterCallback<MouseDownEvent>(SetIsDragging);
-        control.RegisterCallback<PointerCancelEvent>(SetNotDragging);
-        control.RegisterCallback<MouseMoveEvent>(Drag);
+        control.parent.RegisterCallback<MouseDownEvent>(SetIsDragging);
+        control.parent.RegisterCallback<MouseUpEvent>(SetNotDragging);
+        control.parent.RegisterCallback<MouseMoveEvent>(Drag);
     }
 }

@@ -11,3 +11,18 @@
     overflow: hidden;
     background-color: rgb(36, 36, 36);
 }
+
+/* Change the default color of the split bar */
+.unity-two-pane-split-view__dragline-anchor {
+    background-color: #444444;
+}
+
+/* Change the color when hovering over the bar */
+.unity-two-pane-split-view__dragline-anchor:hover {
+    background-color: #00AAFF;
+}
+
+/* Change the color while actively dragging the bar */
+.unity-two-pane-split-view__dragline-anchor:active {
+    background-color: #00FF88;
+}

@@ -9,8 +9,11 @@ public class ShurikenTimelineWindow : EditorWindow
 {
     private ControlData controlData;
     private List<Track> tracks = new List<Track>();
+    private HorizontalResizingBar resizingBar;
     
     [SerializeField]private VisualTreeAsset windowAsset;
+    [SerializeField]private VisualTreeAsset trackHeaderPanelAsset;
+    [SerializeField]private VisualTreeAsset trackPanelAsset;
 
 
     private SerializedObject currentSystem; 
@@ -41,8 +44,8 @@ public class ShurikenTimelineWindow : EditorWindow
     {
         Track.TrackCreateInfo createInfo = new()
         {
-            headerList = rootVisualElement.Q("pnl_track_headers"),
-            trackList = rootVisualElement.Q("pnl_tracks"),
+            headerList = rootVisualElement.Q("pnl_header_container"),
+            trackList = rootVisualElement.Q("pnl_track_container"),
             isRoot = true,
             controlData = controlData
         };
@@ -60,7 +63,6 @@ public class ShurikenTimelineWindow : EditorWindow
 
     void SetupCurrentValue(ChangeEvent<Object> evt)
     {
-        //if (evt.previousValue == evt.newValue) return;
         if (evt.newValue == null)
         {
             RemoveTracks();
@@ -69,11 +71,36 @@ public class ShurikenTimelineWindow : EditorWindow
             return;
         }
         ParticleSystem system = (ParticleSystem)evt.newValue;
-        //if (currentSystem != null && currentSystem.targetObject == system) return;
         currentSystem = new SerializedObject(system);
         rootVisualElement.Bind(currentSystem);
         controlData.endTimeSeconds = ((ParticleSystem)currentSystem.targetObject).main.duration;
         CreateTracks();
+    }
+
+    void CreateSplitView()
+    {
+        var scrollView = rootVisualElement.Q<ScrollView>();
+        var twoPaneSplitView = new TwoPaneSplitView
+        {
+            name = "pnl_split_header_tracks"
+        };
+        var trackHeaderPanel = trackHeaderPanelAsset.Instantiate();
+        var trackPanel = trackPanelAsset.Instantiate();
+        twoPaneSplitView.Add(trackHeaderPanel.contentContainer);
+        twoPaneSplitView.Add(trackPanel.contentContainer);
+        scrollView.Add(twoPaneSplitView);
+    }
+
+    void BindTimelineValues()
+    {
+        MinMaxSlider timeViewSlider = rootVisualElement.Q<MinMaxSlider>();
+        timeViewSlider.RegisterValueChangedCallback(evt =>
+        {
+            if (currentSystem == null || currentSystem.targetObject == null || currentSystem.targetObject is not ParticleSystem ps) return;
+            Vector2 newValue = evt.newValue * ps.main.duration;
+            controlData.startTimeSeconds = newValue.x;
+            controlData.endTimeSeconds = newValue.y;
+        });
     }
     
     private void CreateGUI()
@@ -84,6 +111,8 @@ public class ShurikenTimelineWindow : EditorWindow
         controlData.startTimeSeconds = 0;
         controlData.endTimeSeconds = 0;
         windowAsset.CloneTree(rootVisualElement);
+        CreateSplitView();
+        BindTimelineValues();
         rootVisualElement.Q<ObjectField>("object_target").RegisterValueChangedCallback(SetupCurrentValue);
     }
 }
