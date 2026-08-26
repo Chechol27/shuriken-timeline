@@ -16,7 +16,8 @@ public class ShurikenTimelineWindow : EditorWindow
     [SerializeField]private VisualTreeAsset trackPanelAsset;
 
 
-    private SerializedObject currentSystem; 
+    private SerializedObject currentSystem;
+    private TimeRulerView timeRulerView;
     
     [MenuItem("Window/Sequencing/Shuriken Timeline")]
     private static void ShowWindow()
@@ -75,6 +76,7 @@ public class ShurikenTimelineWindow : EditorWindow
         rootVisualElement.Bind(currentSystem);
         controlData.endTimeSeconds = ((ParticleSystem)currentSystem.targetObject).main.duration;
         CreateTracks();
+        InitializeTimeRenderer();
     }
 
     void CreateSplitView()
@@ -101,6 +103,12 @@ public class ShurikenTimelineWindow : EditorWindow
             controlData.startTimeSeconds = newValue.x;
             controlData.endTimeSeconds = newValue.y;
         });
+    }
+
+    void InitializeTimeRenderer()
+    {
+        //timeRulerView = CreateInstance<TimeRulerView>();
+        //timeRulerView.Init(rootVisualElement.Q<IMGUIContainer>("imgui_time_stamps"), rootVisualElement.Q<IMGUIContainer>(""), controlData);
     }
     
     private void CreateGUI()

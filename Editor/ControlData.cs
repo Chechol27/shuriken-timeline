@@ -5,4 +5,6 @@ public class ControlData : ScriptableObject
     public float currentTimeSeconds;
     public float startTimeSeconds;
     public float endTimeSeconds;
+
+    public float TotalDuration => endTimeSeconds - startTimeSeconds;
 }
